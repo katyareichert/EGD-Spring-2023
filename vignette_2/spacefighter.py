@@ -2,6 +2,7 @@ import pygame
 import os
 
 pygame.font.init()
+pygame.mixer.init()
 
 # Define screen constants
 WIDTH, HEIGHT = 1200, 600
@@ -13,6 +14,12 @@ BG = pygame.transform.scale(pygame.image.load(os.path.join('./assets/backgrounds
 HEALTH_FONT = pygame.font.SysFont('comicsans', 30)
 WIN_FONT = pygame.font.SysFont('comicsans', 80)
 WHITE = (255,255,255)
+
+# Sound
+RED_HIT_SOUND = pygame.mixer.Sound(os.path.join('assets/sfx', 'red_hit.wav'))
+RED_BULLET_SOUND = pygame.mixer.Sound(os.path.join('assets/sfx', 'red_laser.mp3'))
+GREEN_HIT_SOUND = pygame.mixer.Sound(os.path.join('assets/sfx', 'green_hit.wav'))
+GREEN_BULLET_SOUND = pygame.mixer.Sound(os.path.join('assets/sfx', 'green_laser.mp3'))
 
 # Define movement constants
 FPS = 60
@@ -99,7 +106,7 @@ def draw_winner(text):
     WIN.blit(draw_text, (WIDTH//2 - draw_text.get_width()//2, HEIGHT//2  - draw_text.get_height()//2))
     
     pygame.display.update()
-    pygame.time.delay(5000)
+    pygame.time.delay(10000)
 
 def main():
     red = pygame.Rect(100, 300, SHIP_WIDTH, SHIP_HEIGHT)
@@ -126,16 +133,20 @@ def main():
                 if event.key == pygame.K_LSHIFT and len(red_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(red.x + red.width, red.y + 16, 10, 5)
                     red_bullets.append(bullet)
+                    RED_BULLET_SOUND.play()
 
                 if event.key == pygame.K_RSHIFT and len(green_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(green.x, green.y + 16, 10, 5)
                     green_bullets.append(bullet)
+                    GREEN_BULLET_SOUND.play()
 
             if event.type == RED_HIT:
                 red_health -= 1
+                RED_HIT_SOUND.play()
 
             if event.type == GREEN_HIT:
                 green_health -= 1
+                GREEN_HIT_SOUND.play()
 
         if red_health <= 0:
             winner_text = "Goober wins!"
