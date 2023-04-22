@@ -11,7 +11,7 @@ pygame.mixer.init()
 # Define screen constants
 WIDTH, HEIGHT = 150*5, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-BG = pygame.transform.scale(pygame.image.load(os.path.join('./assets/minigame', 'mug.png')), (WIDTH, HEIGHT))
+BG = pygame.transform.scale(pygame.image.load(os.path.join('../assets/minigame', 'mug.png')), (WIDTH, HEIGHT))
 
 # Define movement constants
 FPS = 60

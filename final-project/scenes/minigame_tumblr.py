@@ -11,7 +11,7 @@ pygame.mixer.init()
 # Define screen constants
 WIDTH, HEIGHT = 150*5, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-BG = pygame.transform.scale(pygame.image.load(os.path.join('./assets/minigame', 'mug.png')), (WIDTH, HEIGHT))
+BG = pygame.transform.scale(pygame.image.load(os.path.join('../assets/minigame', 'tumblr.png')), (WIDTH, HEIGHT))
 
 # Define movement constants
 FPS = 60
@@ -27,9 +27,9 @@ MESSAGE_PANE = pygame.Surface((MESS_WIDTH, MESS_HEIGHT), pygame.SRCALPHA)
 MESSAGE_PANE.fill((255,255,255, 0))      
 
 # Define drink things
-GLASS_HEIGHT = 200
+GLASS_HEIGHT = 44*5
 GLASS_WIDTH = 300
-GLASS = pygame.Rect(WIDTH//2 - GLASS_WIDTH//2, HEIGHT//2 - GLASS_HEIGHT//2, GLASS_WIDTH, GLASS_HEIGHT)
+GLASS = pygame.Rect(WIDTH//2 - GLASS_WIDTH//2, HEIGHT//2 - 125, GLASS_WIDTH, GLASS_HEIGHT)
 
 # Define colors
 BLACK = (0,0,0)
@@ -40,6 +40,7 @@ YELLOW = (227, 208, 185)
 pygame.display.set_caption("Comfort Cafe")
 
 def draw_window(pink_rect, yellow_rect, fill_status, quality_text, pink_line_val, yellow_line_val, yellow_start_height):
+    
     # drink fill
     pygame.draw.rect(WIN, WHITE, GLASS)
     pygame.draw.rect(WIN, PINK, pink_rect)
@@ -47,7 +48,7 @@ def draw_window(pink_rect, yellow_rect, fill_status, quality_text, pink_line_val
     
     # drawing overlay
     WIN.blit(BG, (0, 0))
-
+    
     # fill line
     if fill_status < 3:
         dashed_line(WIN, PINK, (WIDTH//3, pink_line_val), (2*WIDTH//3, pink_line_val), width=3)
@@ -84,7 +85,7 @@ def main():
 
     # get random line levels
     pink_line_val = random.randint(220, 280)
-    yellow_line_val = random.randint(180, pink_line_val - 10)
+    yellow_line_val = random.randint(135, pink_line_val - 10)
 
     fill_status = 0
     quality_text = 'moo moo'
@@ -125,8 +126,9 @@ def main():
         # fill animation
         if fill_status == 1:
             if pink_height <= GLASS_HEIGHT:
-                pink_rect = pygame.Rect(WIDTH//2 - GLASS_WIDTH//2, HEIGHT//2 + GLASS_HEIGHT//2 - 
-                                              pink_height, GLASS_WIDTH, pink_height)
+                pink_rect = pygame.Rect(WIDTH//2 - GLASS_WIDTH//2, 
+                                        HEIGHT//2 - 125 + GLASS_HEIGHT - pink_height, 
+                                        GLASS_WIDTH, pink_height)
                 pink_height += FILL_RATE
             else:
                 fill_status += 1
@@ -143,7 +145,7 @@ def main():
         if fill_status == 2:
 
             # get how close to line
-            distance_to_line = abs((HEIGHT//2 + GLASS_HEIGHT//2 - pink_height)-(pink_line_val))
+            distance_to_line = abs((HEIGHT//2 - 125 + GLASS_HEIGHT - pink_height)-(pink_line_val))
             
             if distance_to_line <= 20:
                 quality_text = 'Great job! This will add an extra bit of magic to their day!'
@@ -155,7 +157,7 @@ def main():
             MESSAGE_PANE.fill((255,255,255,255)) 
 
             # set yellow level
-            yellow_start_height = HEIGHT//2 + GLASS_HEIGHT//2 - pink_height + 2
+            yellow_start_height = HEIGHT//2 - 125 + GLASS_HEIGHT - pink_height + 2
 
         # done filling yellow?
         if fill_status == 5:
