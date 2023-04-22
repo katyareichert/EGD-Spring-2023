@@ -34,8 +34,8 @@ GLASS = pygame.Rect(WIDTH//2 - GLASS_WIDTH//2, HEIGHT//2 - GLASS_HEIGHT//2, GLAS
 # Define colors
 BLACK = (0,0,0)
 WHITE = (255,255,255)
-PINK = (255,192,203)
-YELLOW = (255, 191, 0)
+PINK = (93,57,48)
+YELLOW = (227, 208, 185)
 
 pygame.display.set_caption("Comfort Cafe")
 
@@ -107,6 +107,7 @@ def main():
                 if event.key == pygame.K_RETURN:
                     if fill_status == 2: 
                         fill_status += 1
+                        quality_text = 'moo moo'
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
@@ -160,7 +161,7 @@ def main():
         if fill_status == 5:
 
             # get how close to line
-            distance_to_line = abs((HEIGHT//2 + GLASS_HEIGHT//2 - yellow_height)-(yellow_line_val))
+            distance_to_line = abs((yellow_start_height - yellow_height)-(yellow_line_val))
             
             if distance_to_line <= 20:
                 quality_text = 'Great job! This will add an extra bit of magic to their day!'
