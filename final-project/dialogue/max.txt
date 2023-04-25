@@ -1,0 +1,22 @@
+Alex:
+Good morning, Max! How are you feeling today?
+
+Max:
+Hey, Alex! I'm feeling a bit overwhelmed today with my never-ending to-do list.
+
+Alex:
+I hear you, Max.
+
+[SELECTION]
+
+Alex:
+Hopefully this can help you stay calm and focused.
+
+Max:
+That sounds perfect. Thank you, Alex.
+
+[MINIGAME]
+
+Alex:
+You're welcome, Max. Take a deep breath and tackle that to-do list one task at a time. 
+You've got this!

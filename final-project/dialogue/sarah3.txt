@@ -1,0 +1,45 @@
+Alex:
+Hey Sarah, how are you doing today?
+
+Sarah:
+Hi Alex, I'm feeling a little down. It was a rough night.
+
+Alex:
+I'm sorry to hear that. Take your time, and let me know when you're ready to order.
+
+Sarah:
+I'll have a cappuccino and a little surprise to cheer me up, please.
+
+Alex:
+Sure thing, coming right up.
+
+[SELECTION]
+
+Alex:
+Is there anything you'd like to talk about? I'm here to listen if you need someone to talk to.
+
+Sarah:
+Thank you, Alex. It's just been a tough night with some personal issues on my mind.
+
+Alex:
+I understand. Sometimes life can throw us curveballs, and it's okay to feel sad or overwhelmed. Remember, you're not alone, and there are people who care about you.
+
+Sarah:
+I appreciate your kind words, Alex. You always know how to lift my spirits.
+
+[MINIGAME]
+
+Alex:
+I'm glad to hear that. You're a valued customer, and your happiness is important to us.
+
+Sarah:
+Thank you, Alex. I appreciate your kindness.
+
+Alex:
+You're welcome, Sarah. Take care of yourself, and remember to be gentle with yourself during tough times. We're here for you.
+
+Sarah:
+I will, thank you. Your coffee and kind words are a comfort.
+
+Alex:
+Anytime, Sarah. Don't hesitate to reach out if you need anything. Take care.

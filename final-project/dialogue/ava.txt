@@ -1,0 +1,21 @@
+Alex:
+Good morning, Ava! How are you?
+
+Ava:
+Hi Alex, I'm feeling a bit down today. I lost my umbrella.
+
+Alex:
+I'm sorry to hear that, Ava. 
+
+[SELECTION]
+
+Alex:
+I hope this can help lift your spirits!
+
+Ava:
+That sounds lovely. Thank you, Alex.
+
+[MINIGAME]
+
+Alex:
+You're welcome, Ava. I hope this latte brings a smile to your face. Take care.

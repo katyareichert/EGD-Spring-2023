@@ -1,0 +1,13 @@
+Emma: 
+Hello! I have a long day of studying ahead for my exams. I could use some mental clarity and perseverance.
+
+Alex: 
+Absolutely! Based on that, I'd recommend...
+
+[SELECTION]
+
+Alex:
+What do you think?
+
+Emma:
+That sounds great! I'll take that. Thanks, Alex!

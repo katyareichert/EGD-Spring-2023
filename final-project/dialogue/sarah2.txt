@@ -1,0 +1,42 @@
+Alex:
+Hey Sarah! Welcome back. How's your day going?
+
+Sarah:
+Hi Alex! It's been a bit better today. Thanks for asking.
+
+Alex:
+Glad to hear that. What can I get for you?
+
+Sarah:
+I have more of the same lined up for today. Work presentations and workouts, blah blah blah.
+
+Alex:
+Haha, sure. How about...
+
+[SELECTION]
+
+Sarah:
+Perfect, thanks!
+
+[MINIGAME]
+
+Alex:
+So, how did your day go yesterday? Was the coffee helpful?
+
+Sarah:
+Yes, it was! I felt more focused during my meeting and managed to tackle my errands and workout with determination. Thanks for the recommendation!
+
+Alex:
+You're welcome! I'm glad to hear that. Sometimes a little extra patience and courage can go a long way.
+
+Sarah:
+Absolutely! Your coffee is like a daily boost for me.
+
+Alex:
+I'm happy to be a part of your day. It's always a pleasure serving you, Sarah.
+
+Sarah:
+Thank you, Alex! Your coffee and friendly service make my day brighter.
+
+Alex:
+You too, Sarah! Take care and see you again soon.

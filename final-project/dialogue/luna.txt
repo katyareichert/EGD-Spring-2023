@@ -1,0 +1,21 @@
+Alex:
+Hi there, how is your day looking?
+
+Luna:
+Hey, Alex! I have a long day of studying ahead of me.
+
+Alex:
+I feel you, Luna.
+
+[SELECTION]
+
+Alex:
+This can help you stay focused and motivated through the day!
+
+Luna:
+That sounds perfect. Thank you, Alex.
+
+[MINIGAME]
+
+Alex:
+You're welcome, Luna. Best of luck with your studying!

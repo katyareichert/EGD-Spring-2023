@@ -1,0 +1,46 @@
+Alex:
+Hey Mary! How's it going?
+
+Mary:
+Hi Alex! I'm doing great, thanks. I have a date with a cute girl later today.
+
+Alex:
+That's awesome!
+So, tell me more about this date. Where are you two going?
+
+Mary:
+We're going for a picnic in the park. I'm really excited about it!
+
+Alex:
+Sounds like a lovely plan. I hope you have a wonderful time!
+
+Mary:
+Thank you, Alex! I'm really looking forward to it.
+
+Alex:
+Well, to give you a little boost for your big day, I think you'll need some...
+
+[SELECTION]
+
+Alex:
+It takes courage to put yourself out there and be vulnerable, and love to connect with someone special.
+
+Mary:
+That's true! I'll take all the courage and love I can get.
+
+[MINIGAME]
+
+Alex:
+Enjoy!
+
+Mary:
+Thanks, Alex! I appreciate it.
+
+Alex:
+You're welcome, Mary. I hope your date goes amazingly well!
+
+Mary:
+Thank you, Alex! I'll let you know how it goes.
+
+Alex:
+Looking forward to hearing all about it. Have a fantastic day!

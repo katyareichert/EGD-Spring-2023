@@ -1,0 +1,18 @@
+Alex: 
+Good morning! Welcome to Comfort Cafe. How can I help you today?
+
+Mark:
+Hey there! I'm planning to work on my art project all day today. 
+I could use some inspiration and creativity.
+
+Alex:
+Of course! For your creative day, I'd recommend...
+
+[SELECTION]
+
+Alex:
+What do you think?
+
+Mark: That sounds awesome! I'll take that. Thanks, Alex!
+
+[MINIGAME]

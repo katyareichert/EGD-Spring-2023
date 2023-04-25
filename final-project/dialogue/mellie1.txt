@@ -1,0 +1,44 @@
+Alex:
+Hey Mellie, how are you today?
+
+Mellie:
+Hi Alex. It's been a rough day. 
+I just went through a difficult breakup.
+
+Alex:
+I'm so sorry to hear that, Mellie. Breakups can be tough.
+Do you want to talk about it?
+
+Mellie:
+It's just been hard, you know? I thought things were going well, but it didn't work out. I'm feeling a bit lost.
+
+Alex:
+Breakups can be tough, but remember that you're not alone. You have friends and family who care about you, and you're strong enough to get through this.
+
+Mellie:
+Thanks, Alex. I appreciate your kind words.
+
+Alex:
+Of course, anytime. I think for today, you'll need some...
+
+[SELECTION]
+
+Alex:
+Patience to give yourself time to heal and Serenity to find peace within yourself.
+
+Mellie:
+That sounds like just what I need right now.
+
+[MINIGAME]
+
+Alex:
+Here you go. Take care of yourself, Mellie.
+
+Mellie:
+Thank you, Alex. I'll do my best.
+
+Alex:
+You're welcome. If you ever need someone to talk to, I'm here for you.
+
+Mellie:
+Thanks, Alex. I appreciate it.
