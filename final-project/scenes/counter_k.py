@@ -45,13 +45,16 @@ def main():
         t = clock.get_time()
         elapsed_time_ctr += t
         
-        # Handle Menu selection
+        
+
+        # Handle User Actions
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                         
         draw_window(bg_counter)
 
+        # Animation Counter
         if elapsed_time_ctr >= 320:
             bg_counter += 1
             elapsed_time_ctr = 0

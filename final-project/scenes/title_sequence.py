@@ -19,6 +19,8 @@ MAIN_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('../assets/tit
                                         str(i) + '.png')), (WIDTH, HEIGHT)) for i in range(0,3)]
 CREDIT_PAGE = pygame.transform.scale(pygame.image.load(os.path.join('../assets/title_seq', 'credits.png')), 
                                     (WIDTH, HEIGHT))
+CREDIT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('../assets/title_seq', 'joey_' + 
+                                        str(i) + '.png')), (WIDTH, HEIGHT)) for i in range(0,8)]
 
 # Define movement constants
 FPS = 60
@@ -32,6 +34,8 @@ def draw_window(show_credits_page, bg_counter, text_opacity, select_indicator):
 
     if show_credits_page:
          WIN.blit(CREDIT_PAGE, (0,0))
+         WIN.blit(CREDIT_GIF[bg_counter%8], (0,0))
+
 
     else:
         # Handle background
