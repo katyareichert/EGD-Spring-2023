@@ -1,6 +1,4 @@
 import pygame
-import numpy  as np
-import random
 import os
 
 from scenes.title_sequence import TitleSequence
@@ -16,6 +14,9 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 # Define movement constants
 FPS = 60
 
+# Load in background music
+BG_MUSIC = pygame.mixer.music.load(os.path.join('sound', 'main_music.ogg'))
+
 pygame.display.set_caption("Comfort Cafe")
 
 def main():
@@ -24,6 +25,7 @@ def main():
     ts = TitleSequence(WIN, WIDTH, HEIGHT, FPS)
     mc = MainCounter(WIN, WIDTH, HEIGHT, FPS)
 
+    pygame.mixer.music.play(loops=-1)
     run = ts.run_scene()
 
     while(run):
