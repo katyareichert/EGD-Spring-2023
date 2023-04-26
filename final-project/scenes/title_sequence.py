@@ -1,121 +1,125 @@
 import pygame
-import numpy  as np
-import random
 import os
 
-pygame.font.init()
-pygame.mixer.init()
+class TitleSequence:
 
-# Define screen constants
-WIDTH, HEIGHT = 150*5, 500
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+    def __init__(self, win, width, height, fps) -> None:
 
-# Read in background images
-TITLE_TEXT = pygame.transform.scale(pygame.image.load(os.path.join('../assets/title_seq', 'title.png')), 
-                                    (WIDTH, HEIGHT))
-START_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('../assets/title_seq', 'frame_' + 
-                                        str(i) + '.png')), (WIDTH, HEIGHT)) for i in range(0,12)]
-MAIN_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('../assets/title_seq', 'main_' + 
-                                        str(i) + '.png')), (WIDTH, HEIGHT)) for i in range(0,3)]
-CREDIT_PAGE = pygame.transform.scale(pygame.image.load(os.path.join('../assets/title_seq', 'credits.png')), 
-                                    (WIDTH, HEIGHT))
-CREDIT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('../assets/title_seq', 'joey_' + 
-                                        str(i) + '.png')), (WIDTH, HEIGHT)) for i in range(0,8)]
+        self.WIDTH, self.HEIGHT = width, height
+        self.WIN = win
+        self.FPS = fps
 
-# Define movement constants
-FPS = 60
+        # Read in background images
+        self.TITLE_TEXT = pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'title.png')), 
+                                            (self.WIDTH, self.HEIGHT))
+        self.START_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'frame_' + 
+                                                str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,12)]
+        self.MAIN_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'main_' + 
+                                                str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,3)]
+        self.CREDIT_PAGE = pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'credits.png')), 
+                                            (self.WIDTH, self.HEIGHT))
+        self.CREDIT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'joey_' + 
+                                                str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,8)]
+        self.OUT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'fade_out_' + 
+                                                str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,17)]
 
-# Define colors
-WHITE = (255,255,255)
+        # Define colors
+        self.WHITE = (255,255,255)
 
-pygame.display.set_caption("Comfort Cafe")
+    def draw_window(self, show_credits_page, bg_counter, text_opacity, select_indicator):
 
-def draw_window(show_credits_page, bg_counter, text_opacity, select_indicator):
+        if show_credits_page:
+            self.WIN.blit(self.CREDIT_PAGE, (0,0))
+            self.WIN.blit(self.CREDIT_GIF[bg_counter%8], (0,0))
 
-    if show_credits_page:
-         WIN.blit(CREDIT_PAGE, (0,0))
-         WIN.blit(CREDIT_GIF[bg_counter%8], (0,0))
-
-
-    else:
-        # Handle background
-        if bg_counter < 12:
-                WIN.blit(START_GIF[bg_counter], (0,0))
         else:
-            WIN.blit(MAIN_GIF[bg_counter%3], (0,0))
-
-        # Handle title text
-        if bg_counter > 12:
-            if text_opacity < 254:
-                fade_in_text(text_opacity)
-                text_opacity += 10
+            # Handle background
+            if bg_counter < 12:
+                    self.WIN.blit(self.START_GIF[bg_counter], (0,0))
             else:
-                fade_in_text(text_opacity, select_indicator)
+                self.WIN.blit(self.MAIN_GIF[bg_counter%3], (0,0))
 
-    # update
-    pygame.display.update()
+            # Handle title text
+            if bg_counter > 12:
+                if text_opacity < 254:
+                    self.fade_in_text(text_opacity)
+                    text_opacity += 10
+                else:
+                    self.fade_in_text(text_opacity, select_indicator)
 
-    return text_opacity
+        # update
+        pygame.display.update()
 
-def fade_in_text(text_opacity, selected_pos=None):
-    if text_opacity < 255:
-        trans_text = TITLE_TEXT.copy()
-        trans_text.fill((255, 255, 255, text_opacity), None, pygame.BLEND_RGBA_MULT)
-        WIN.blit(trans_text, (0,0))
-    else:
-        WIN.blit(TITLE_TEXT, (0,0))
-        pygame.draw.rect(WIN, WHITE, selected_pos)
+        return text_opacity
 
-def main():
-    # initialize clock
-    clock = pygame.time.Clock()
-    run = True
+    def fade_in_text(self, text_opacity, selected_pos=None):
+        if text_opacity < 255:
+            trans_text = self.TITLE_TEXT.copy()
+            trans_text.fill((255, 255, 255, text_opacity), None, pygame.BLEND_RGBA_MULT)
+            self.WIN.blit(trans_text, (0,0))
+        else:
+            self.WIN.blit(self.TITLE_TEXT, (0,0))
+            pygame.draw.rect(self.WIN, self.WHITE, selected_pos)
 
-    elapsed_time_ctr = 0
-    bg_counter = 0
-    text_opacity = 5
-    select_indicator = pygame.Rect(510, 200, 10, 10)
-    show_credits_page = False
+    def run_scene(self):
+        # initialize clock
+        clock = pygame.time.Clock()
+        run = True
 
-    # game loop
-    while(run):
-        clock.tick(FPS)
+        elapsed_time_ctr = 0
+        bg_counter = 0
+        text_opacity = 5
+        select_indicator = pygame.Rect(510, 200, 10, 10)
+        show_credits_page = False
 
-        t = clock.get_time()
-        elapsed_time_ctr += t
-        
-        # Handle Menu selection
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
+        # game loop
+        while(run):
+            clock.tick(self.FPS)
 
-            if text_opacity == 255:
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_UP or event.key == pygame.K_w:
-                        select_indicator.update(510, 200, 10, 10)
+            t = clock.get_time()
+            elapsed_time_ctr += t
+            
+            # Handle Menu selection
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return False
 
-                    if event.key == pygame.K_DOWN or event.key == pygame.K_s:
-                        select_indicator.update(510, 270, 10, 10)
+                if text_opacity == 255:
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_UP or event.key == pygame.K_w:
+                            select_indicator.update(510, 200, 10, 10)
 
-                    if event.key == pygame.K_RETURN:
-                        if show_credits_page == True:
-                            show_credits_page = False
-                        elif select_indicator.collidepoint(511, 201):
-                            # Start the game
-                            pass
-                        elif select_indicator.collidepoint(511, 271):
-                            # Show about screen
-                            show_credits_page = True
+                        if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                            select_indicator.update(510, 270, 10, 10)
 
-                        
-        text_opacity = draw_window(show_credits_page, bg_counter, text_opacity, select_indicator)
+                        if event.key == pygame.K_RETURN:
+                            if show_credits_page == True:
+                                show_credits_page = False
 
-        if elapsed_time_ctr >= 247.5:
-            bg_counter += 1
-            elapsed_time_ctr = 0
+                            elif select_indicator.collidepoint(511, 201):
+                                # Start the game
 
-    pygame.quit()
+                                for i in range(len(self.OUT_GIF)):
+                                    self.WIN.blit(self.OUT_GIF[i], (0,0))
+                                    pygame.display.update()
+
+                                    clock.tick(4)
+
+                                return True
+                            elif select_indicator.collidepoint(511, 271):
+                                # Show about screen
+                                show_credits_page = True
+  
+            text_opacity = self.draw_window(show_credits_page, bg_counter, text_opacity, select_indicator)
+
+            if elapsed_time_ctr >= 247.5:
+                bg_counter += 1
+                elapsed_time_ctr = 0
 
 
 if __name__ == "__main__":
-    main()
+    w,h = 150*5, 500
+    win = pygame.display.set_mode((w, h))
+    mc = TitleSequence(win, w, h)
+
+    mc.run_scene()
