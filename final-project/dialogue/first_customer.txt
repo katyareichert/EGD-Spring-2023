@@ -1,0 +1,46 @@
+Alex:
+Welcome to Comfort Cafe!
+
+Uno:
+Hi there! Can I get a coffee with some almond milk please?
+
+Alex:
+Absolutely not!
+Just kidding, but we do things a little differently here.
+Instead of taking specific orders, .
+
+Uno:
+Oh, that's interesting...
+I'm not sure I follow.
+
+Alex:
+It's pretty simple!
+Just tell me a little bit about your day and what you have planned,
+and I'll suggest a drink and pastry that will help you through it.
+
+Uno:
+Well, I'm feeling pretty good today.
+I have a presentation at work this afternoon,
+so I guess I need to be focused and confident.
+
+Alex:
+Excellent! How about...
+
+[SELECTION]
+
+Alex:
+It's delicious and indulgent, perfect for rewarding yourself after a job well done.
+
+Uno:
+Wow, that sounds great! You really know your stuff.
+
+Alex:
+Perfect, I'll go ahead and make your drink now!
+
+[MINIGAME]
+
+Barista:
+Smells delicious!
+
+Alex:
+Enjoy your drink and pastry, and good luck with your presentation!
