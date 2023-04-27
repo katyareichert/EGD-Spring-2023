@@ -1,88 +1,74 @@
 import pygame
-import numpy  as np
-import random
 import os
 
-pygame.font.init()
-pygame.mixer.init()
+class FoodSelection:
 
-# Define screen constants
-WIDTH, HEIGHT = 150*5, 500
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+    def __init__(self, win, width, height, fps) -> None:
 
-# Read in background images
-BG = pygame.transform.scale(pygame.image.load(os.path.join('../assets/food_select', 'frame_0.png')), 
-                                    (WIDTH, HEIGHT))
-SELECT_GRID = [pygame.transform.scale(pygame.image.load(os.path.join('../assets/food_select', 'frame_' + 
-                                        str(i) + '.png')), (WIDTH, HEIGHT)) for i in range(1,7)]
-# 
-# 0 1 2
-# 3 4 5
+        self.WIDTH, self.HEIGHT = width, height
+        self.WIN = win
+        self.FPS = fps
 
+        # Read in background images
+        self.BG = pygame.transform.scale(pygame.image.load(os.path.join('assets/food_select', 'frame_0.png')), 
+                                            (self.WIDTH, self.HEIGHT))
+        self.SELECT_GRID = [pygame.transform.scale(pygame.image.load(os.path.join('assets/food_select', 'frame_' + 
+                                                str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(1,7)]
+        # Define colors
+        self.WHITE = (255,255,255)
 
-# Define movement constants
-FPS = 60
+    def draw_window(self, select_i):
 
-# Define colors
-WHITE = (255,255,255)
+        if select_i < 0:
+            self.WIN.blit(self.BG, (0,0))
+        else:
+            self.WIN.blit(self.SELECT_GRID[select_i], (0,0))
 
-pygame.display.set_caption("Comfort Cafe")
-
-def draw_window(select_i):
-
-    if select_i < 0:
-        WIN.blit(BG, (0,0))
-    else:
-        WIN.blit(SELECT_GRID[select_i], (0,0))
-
-    # update
-    pygame.display.update()
+        # update
+        pygame.display.update()
 
 
-def main():
-    # initialize clock
-    clock = pygame.time.Clock()
-    run = True
-    select_i = -1
+    def run_scene(self):
+        # initialize clock
+        clock = pygame.time.Clock()
+        run = True
+        select_i = -1
 
-    # game loop
-    while(run):
-        clock.tick(FPS)
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
+        # game loop
+        while(run):
+            clock.tick(self.FPS)
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
 
-            if event.type == pygame.KEYDOWN:
-                
-                # Start select mode
-                if select_i == -1:
-                    select_i += 1
+                if event.type == pygame.KEYDOWN:
+                    
+                    # Start select mode
+                    if select_i == -1:
+                        select_i += 1
 
-                # Enter the minigame
-                elif event.key == pygame.K_RETURN:
-                    if select_i < 3:
-                        # tumblr
-                        pass
-                    else:
-                        # mug
-                        pass
+                    # Return food selected
+                    elif event.key == pygame.K_RETURN:
+                        return select_i + 1
 
-                # Move selection
-                elif (event.key == pygame.K_DOWN or event.key == pygame.K_s) and select_i < 3:
-                    select_i += 3
-                elif (event.key == pygame.K_UP or event.key == pygame.K_w) and select_i > 2:
-                    select_i -= 3
-                elif (event.key == pygame.K_LEFT or event.key == pygame.K_a) and select_i%3 != 0:
-                    select_i -= 1
-                elif (event.key == pygame.K_RIGHT or event.key == pygame.K_d) and select_i%3 != 2:
-                    select_i += 1
+                    # Move selection
+                    elif (event.key == pygame.K_DOWN or event.key == pygame.K_s) and select_i < 3:
+                        select_i += 3
+                    elif (event.key == pygame.K_UP or event.key == pygame.K_w) and select_i > 2:
+                        select_i -= 3
+                    elif (event.key == pygame.K_LEFT or event.key == pygame.K_a) and select_i%3 != 0:
+                        select_i -= 1
+                    elif (event.key == pygame.K_RIGHT or event.key == pygame.K_d) and select_i%3 != 2:
+                        select_i += 1
 
-                        
-        draw_window(select_i)
-
-    pygame.quit()
+                            
+            self.draw_window(select_i)
 
 
 if __name__ == "__main__":
-    main()
+    w,h = 150*5, 500
+    win = pygame.display.set_mode((w, h))
+    mc = FoodSelection(win, w, h)
+
+    mc.run_scene()

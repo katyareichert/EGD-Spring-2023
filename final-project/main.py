@@ -3,6 +3,8 @@ import os
 
 from scenes.title_sequence import TitleSequence
 from scenes.counter_k import MainCounter
+from scenes.food_selection import FoodSelection
+from scenes.drink_selection import DrinkSelection
 
 pygame.font.init()
 pygame.mixer.init()
@@ -24,12 +26,20 @@ def main():
    # Initialize all scenes
     ts = TitleSequence(WIN, WIDTH, HEIGHT, FPS)
     mc = MainCounter(WIN, WIDTH, HEIGHT, FPS)
+    ds = DrinkSelection(WIN, WIDTH, HEIGHT, FPS)
+    fs = FoodSelection(WIN, WIDTH, HEIGHT, FPS)
 
     pygame.mixer.music.play(loops=-1)
     run = ts.run_scene()
 
     while(run):
-        run = mc.run_scene()
+        mc.run_scene()
+        
+        drink_selection = ds.run_scene()
+        print(str(drink_selection))
+
+        food_selection = fs.run_scene()
+        print(str(food_selection))
 
     pygame.quit()
 

@@ -42,7 +42,11 @@ class MainCounter:
             # Handle User Actions
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    run = False
+                    pygame.quit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        return True
                             
             self.draw_window(bg_counter)
 

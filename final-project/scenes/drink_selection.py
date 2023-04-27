@@ -10,9 +10,9 @@ class DrinkSelection:
         self.FPS = fps
 
         # Read in background images
-        self.BG = pygame.transform.scale(pygame.image.load(os.path.join('../assets/drink_select', 'frame_0.png')), 
+        self.BG = pygame.transform.scale(pygame.image.load(os.path.join('assets/drink_select', 'frame_0.png')), 
                                             (self.WIDTH, self.HEIGHT))
-        self.SELECT_GRID = [pygame.transform.scale(pygame.image.load(os.path.join('../assets/drink_select', 'frame_' + 
+        self.SELECT_GRID = [pygame.transform.scale(pygame.image.load(os.path.join('assets/drink_select', 'frame_' + 
                                                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(1,7)]
         # Define colors
         self.WHITE = (255,255,255)
@@ -40,7 +40,7 @@ class DrinkSelection:
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    run = False
+                    pygame.quit()
 
                 if event.type == pygame.KEYDOWN:
                     
@@ -48,14 +48,9 @@ class DrinkSelection:
                     if select_i == -1:
                         select_i += 1
 
-                    # Enter the minigame
+                    # Return drink selected
                     elif event.key == pygame.K_RETURN:
-                        if select_i < 3:
-                            # tumblr
-                            pass
-                        else:
-                            # mug
-                            pass
+                        return select_i + 1
 
                     # Move selection
                     elif (event.key == pygame.K_DOWN or event.key == pygame.K_s) and select_i < 3:
@@ -69,8 +64,6 @@ class DrinkSelection:
 
                             
             self.draw_window(select_i)
-
-        return False
 
 
 if __name__ == "__main__":
