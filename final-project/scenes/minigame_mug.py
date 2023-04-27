@@ -83,8 +83,6 @@ class MinigameMug:
         fill_status = 0
         quality_text = 'moo moo'
 
-        CONT_BUTTON = self.WIN.blit(pygame.Surface((0, 0), pygame.SRCALPHA), (0, 0))
-
         # game loop
         while(run):
             clock.tick(self.FPS)
@@ -111,14 +109,6 @@ class MinigameMug:
                     if event.key == pygame.K_SPACE:
                         if fill_status == 1 or fill_status == 4:
                                 fill_status += 1
-
-                # check mouse action
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    b = CONT_BUTTON
-                    pos = pygame.mouse.get_pos()
-                    if b.collidepoint(pos):
-                        fill_status += 1
-                        CONT_BUTTON = pygame.Rect(0,0,0,0)
 
             # fill animation
             if fill_status == 1:
@@ -178,4 +168,4 @@ if __name__ == "__main__":
     win = pygame.display.set_mode((w, h))
     mc = MinigameMug(win, w, h)
 
-    mc.run_scene()
+    mc.run_scene(((91,61,43), (246,233,215)))

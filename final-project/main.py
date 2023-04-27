@@ -6,7 +6,7 @@ from scenes.counter_k import MainCounter
 from scenes.food_selection import FoodSelection
 from scenes.drink_selection import DrinkSelection
 from scenes.minigame_mug import MinigameMug
-from scenes.draw_fill_line import dashed_line
+from scenes.minigame_tumblr import MinigameTumblr
 
 pygame.font.init()
 pygame.mixer.init()
@@ -41,6 +41,7 @@ def main():
     ds = DrinkSelection(WIN, WIDTH, HEIGHT, FPS)
     fs = FoodSelection(WIN, WIDTH, HEIGHT, FPS)
     mm = MinigameMug(WIN, WIDTH, HEIGHT, FPS)
+    mt = MinigameTumblr(WIN, WIDTH, HEIGHT, FPS)
 
     pygame.mixer.music.play(loops=-1)
     run = ts.run_scene()
@@ -53,6 +54,8 @@ def main():
 
         if drink_selection >= 4:
             mm.run_scene(DRINK_COlORS[drink_selection])
+        else:
+            mt.run_scene(DRINK_COlORS[drink_selection])
 
         food_selection = fs.run_scene()
         print(str(food_selection))
