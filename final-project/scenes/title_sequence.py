@@ -19,10 +19,6 @@ class TitleSequence:
                                                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,12)]
         self.MAIN_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'main_' + 
                                                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,3)]
-        self.CREDIT_PAGE = pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'credits.png')), 
-                                            (self.WIDTH, self.HEIGHT))
-        self.CREDIT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'joey_' + 
-                                                str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,8)]
         self.OUT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'fade_out_' + 
                                                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,17)]
 

@@ -43,7 +43,8 @@ FPS = 60
 BG_MUSIC = pygame.mixer.music.load(os.path.join('sound', 'main_music.ogg'))
 
 # Load in fonts
-font = pygame.font.SysFont('pixeloidsansjr6qo', 10)
+font_big = pygame.font.SysFont('pixeloidsansjr6qo', 30)
+font_small = pygame.font.SysFont('pixeloidsansjr6qo', 18)
 
 # Define colors
 DRINK_COlORS = {
@@ -61,7 +62,7 @@ pygame.display.set_caption("Comfort Cafe")
 def main():
    
     # Initialize options page
-    op = OptionsPage(WIN, WIDTH, HEIGHT, FPS, pygame.mixer.music.get_volume())
+    op = OptionsPage(WIN, WIDTH, HEIGHT, FPS, pygame.mixer.music.get_volume(), font_big, font_small)
 
     # Initialize all scenes
     ts = TitleSequence(WIN, WIDTH, HEIGHT, FPS, op)
@@ -72,7 +73,10 @@ def main():
     mt = MinigameTumblr(WIN, WIDTH, HEIGHT, FPS)
 
     pygame.mixer.music.play(loops=-1)
-    pygame.mixer.music.set_volume(1.0)
+
+    # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
+    pygame.mixer.music.set_volume(0)  # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
+    # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
 
     run = ts.run_scene()
 
