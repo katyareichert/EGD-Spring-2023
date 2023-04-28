@@ -1,13 +1,16 @@
 import pygame
 import os
 
+from scenes.options_page import OptionsPage
+
 class TitleSequence:
 
-    def __init__(self, win, width, height, fps) -> None:
+    def __init__(self, win, width, height, fps, op) -> None:
 
         self.WIDTH, self.HEIGHT = width, height
         self.WIN = win
         self.FPS = fps
+        self.OP = op
 
         # Read in background images
         self.TITLE_TEXT = pygame.transform.scale(pygame.image.load(os.path.join('assets/title_seq', 'title.png')), 
@@ -26,26 +29,20 @@ class TitleSequence:
         # Define colors
         self.WHITE = (255,255,255)
 
-    def draw_window(self, show_credits_page, bg_counter, text_opacity, select_indicator):
-
-        if show_credits_page:
-            self.WIN.blit(self.CREDIT_PAGE, (0,0))
-            self.WIN.blit(self.CREDIT_GIF[bg_counter%8], (0,0))
-
+    def draw_window(self, bg_counter, text_opacity, select_indicator):
+        # Handle background
+        if bg_counter < 12:
+                self.WIN.blit(self.START_GIF[bg_counter], (0,0))
         else:
-            # Handle background
-            if bg_counter < 12:
-                    self.WIN.blit(self.START_GIF[bg_counter], (0,0))
-            else:
-                self.WIN.blit(self.MAIN_GIF[bg_counter%3], (0,0))
+            self.WIN.blit(self.MAIN_GIF[bg_counter%3], (0,0))
 
-            # Handle title text
-            if bg_counter > 12:
-                if text_opacity < 254:
-                    self.fade_in_text(text_opacity)
-                    text_opacity += 10
-                else:
-                    self.fade_in_text(text_opacity, select_indicator)
+        # Handle title text
+        if bg_counter > 12:
+            if text_opacity < 254:
+                self.fade_in_text(text_opacity)
+                text_opacity += 10
+            else:
+                self.fade_in_text(text_opacity, select_indicator)
 
         # update
         pygame.display.update()
@@ -70,7 +67,6 @@ class TitleSequence:
         bg_counter = 0
         text_opacity = 5
         select_indicator = pygame.Rect(510, 200, 10, 10)
-        show_credits_page = False
 
         # game loop
         while(run):
@@ -93,24 +89,24 @@ class TitleSequence:
                             select_indicator.update(510, 270, 10, 10)
 
                         if event.key == pygame.K_RETURN:
-                            if show_credits_page == True:
-                                show_credits_page = False
 
-                            elif select_indicator.collidepoint(511, 201):
+                            if select_indicator.collidepoint(511, 201):
                                 # Start the game
 
                                 for i in range(len(self.OUT_GIF)):
+                                    pygame.event.get()
                                     self.WIN.blit(self.OUT_GIF[i], (0,0))
                                     pygame.display.update()
-
+                                    
                                     clock.tick(4)
 
                                 return True
+                            
                             elif select_indicator.collidepoint(511, 271):
                                 # Show about screen
-                                show_credits_page = True
+                                self.OP.run_scene()
   
-            text_opacity = self.draw_window(show_credits_page, bg_counter, text_opacity, select_indicator)
+            text_opacity = self.draw_window(bg_counter, text_opacity, select_indicator)
 
             if elapsed_time_ctr >= 247.5:
                 bg_counter += 1

@@ -1,14 +1,35 @@
+# Library Imports
 import pygame
+
+import sys
 import os
 
+import subprocess
+import pkg_resources
+from fontTools.ttLib import TTFont
+
+# Check for required packages
+required = {'pygame', 'fonttools'}
+installed = {pkg.key for pkg in pkg_resources.working_set}
+missing = required - installed
+
+if missing:
+    python = sys.executable
+    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
+
+# Scene Imports
 from scenes.title_sequence import TitleSequence
+from scenes.options_page import OptionsPage
 from scenes.counter_k import MainCounter
 from scenes.food_selection import FoodSelection
 from scenes.drink_selection import DrinkSelection
 from scenes.minigame_mug import MinigameMug
 from scenes.minigame_tumblr import MinigameTumblr
 
+# Initialize pygame packages
 pygame.font.init()
+# font = TTFont(os.path.join('dialogue/font.ttf', 'PixeloidSans-JR6qo.ttf'))
+# font.save('dialogue')
 pygame.mixer.init()
 
 # Define screen constants
@@ -21,6 +42,9 @@ FPS = 60
 # Load in background music
 BG_MUSIC = pygame.mixer.music.load(os.path.join('sound', 'main_music.ogg'))
 
+# Load in fonts
+font = pygame.font.SysFont('pixeloidsansjr6qo', 10)
+
 # Define colors
 DRINK_COlORS = {
     1: ((91,61,43), (246,233,215)),
@@ -31,12 +55,16 @@ DRINK_COlORS = {
     6: ((149,91,54), (250,190,168))
 }
 
+# Set Window Caption
 pygame.display.set_caption("Comfort Cafe")
 
 def main():
    
-   # Initialize all scenes
-    ts = TitleSequence(WIN, WIDTH, HEIGHT, FPS)
+    # Initialize options page
+    op = OptionsPage(WIN, WIDTH, HEIGHT, FPS, pygame.mixer.music.get_volume())
+
+    # Initialize all scenes
+    ts = TitleSequence(WIN, WIDTH, HEIGHT, FPS, op)
     mc = MainCounter(WIN, WIDTH, HEIGHT, FPS)
     ds = DrinkSelection(WIN, WIDTH, HEIGHT, FPS)
     fs = FoodSelection(WIN, WIDTH, HEIGHT, FPS)
@@ -44,6 +72,8 @@ def main():
     mt = MinigameTumblr(WIN, WIDTH, HEIGHT, FPS)
 
     pygame.mixer.music.play(loops=-1)
+    pygame.mixer.music.set_volume(1.0)
+
     run = ts.run_scene()
 
     while(run):

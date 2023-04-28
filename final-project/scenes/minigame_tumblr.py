@@ -16,6 +16,8 @@ class MinigameTumblr:
         # Define screen constants
         self.BG = pygame.transform.scale(pygame.image.load(os.path.join('assets/minigame', 'tumblr.png')), 
                                          (self.WIDTH, self.HEIGHT))
+        self.STARS = pygame.transform.scale(pygame.image.load(os.path.join('assets/minigame', 'tumblr.png')), 
+                                         (self.WIDTH, self.HEIGHT))
 
         # Define movement constants
         self.FILL_RATE = 2
@@ -54,7 +56,7 @@ class MinigameTumblr:
 
         # message pane
         if fill_status == 2 or fill_status == 5:
-            self.WIN.blit(self.MESSAGE_PANE, (2*self.WIDTH//3 + 50, self.HEIGHT//2 - self.MESS_HEIGHT//2))
+            self.WIN.blit(self.MESSAGE_PANE, (0,0))
 
         # update
         pygame.display.update()

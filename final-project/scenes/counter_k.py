@@ -52,7 +52,7 @@ class MainCounter:
             self.draw_window(bg_counter)
 
             # Animation Counter
-            if elapsed_time_ctr >= 320:
+            if elapsed_time_ctr >= 375:
                 bg_counter += 1
                 elapsed_time_ctr = 0
 
@@ -60,6 +60,6 @@ class MainCounter:
 if __name__ == "__main__":
     w,h = 150*5, 500
     win = pygame.display.set_mode((w, h))
-    mc = MainCounter(win, w, h)
+    mc = MainCounter(win, w, h, 60)
 
     mc.run_scene()
