@@ -63,6 +63,7 @@ class TitleSequence:
         bg_counter = 0
         text_opacity = 5
         select_indicator = pygame.Rect(510, 200, 10, 10)
+        char = 0
 
         # game loop
         while(run):
@@ -96,11 +97,11 @@ class TitleSequence:
                                     
                                     clock.tick(4)
 
-                                return True
+                                return (True, char)
                             
                             elif select_indicator.collidepoint(511, 271):
                                 # Show about screen
-                                self.OP.run_scene()
+                                char = self.OP.run_scene()
   
             text_opacity = self.draw_window(bg_counter, text_opacity, select_indicator)
 

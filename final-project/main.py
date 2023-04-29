@@ -78,21 +78,20 @@ def main():
     pygame.mixer.music.set_volume(0)  # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
     # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
 
-    run = ts.run_scene()
+    run, char = ts.run_scene()
 
     while(run):
-        mc.run_scene()
+        mc.run_scene(char)
 
+        # SELECTION
         drink_selection = ds.run_scene()
-        print(str(drink_selection))
+        food_selection = fs.run_scene()
 
+        # MINIGAME
         if drink_selection >= 4:
             mm.run_scene(DRINK_COlORS[drink_selection])
         else:
             mt.run_scene(DRINK_COlORS[drink_selection])
-
-        food_selection = fs.run_scene()
-        print(str(food_selection))
 
     pygame.quit()
 

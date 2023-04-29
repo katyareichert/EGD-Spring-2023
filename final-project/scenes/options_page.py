@@ -3,7 +3,7 @@ import os
 
 class OptionsPage:
 
-    def __init__(self, win, width, height, fps, volume, font1, font2, char='k') -> None:
+    def __init__(self, win, width, height, fps, volume, font1, font2, char=0) -> None:
 
         self.WIDTH, self.HEIGHT = width, height
         self.WIN = win
@@ -18,6 +18,8 @@ class OptionsPage:
                                             (self.WIDTH, self.HEIGHT))
         self.CREDIT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/options', 'joey_' + 
                                                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,8)]
+        self.CIRCLES = [pygame.image.load(os.path.join('assets/options', 'circle_' +  str(i) + '.png')) for i in range(0,2)]
+        
         # Define colors
         self.WHITE = (255,255,255)
         self.BROWN = (60,45,31)
@@ -44,10 +46,13 @@ class OptionsPage:
 
         # Draw background
         self.WIN.blit(self.CREDIT_PAGE, (0,0))
-        self.WIN.blit(self.CREDIT_GIF[bg_counter%8], (0,0))
 
-        # Draw rectangle
+        # Draw rectangle and circle
         pygame.draw.rect(self.WIN, self.YELLOW, self.TXT_RECTS[selected_i])
+        self.WIN.blit(self.CIRCLES[self.CHAR], (0,0))
+
+        # Draw characters
+        self.WIN.blit(self.CREDIT_GIF[bg_counter%8], (0,0))
 
         # Draw text
         for i in range(len(self.TEXTS)):
@@ -94,18 +99,22 @@ class OptionsPage:
                         if selected_i == 0:
                             self.VOLUME = round(self.VOLUME - 0.2, 1)
                             pygame.mixer.music.set_volume(self.VOLUME)
+                        elif selected_i == 1:
+                            self.CHAR = 1
 
                     if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                         # change volume or select character
                         if selected_i == 0:
                             self.VOLUME = round(self.VOLUME + 0.2, 1)
                             pygame.mixer.music.set_volume(self.VOLUME)
+                        elif selected_i == 1:
+                            self.CHAR = 0
 
                     if event.key == pygame.K_RETURN:
                         if selected_i < len(self.TEXTS)-2:
                             selected_i += 1
                         elif selected_i == len(self.TEXTS)-2:
-                            return
+                            return self.CHAR
                         else:
                             pygame.quit()
                             exit()
