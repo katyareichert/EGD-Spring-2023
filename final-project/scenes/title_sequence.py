@@ -75,7 +75,7 @@ class TitleSequence:
             # Handle Menu selection
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    return False
+                    return (False, 0)
 
                 if text_opacity == 255:
                     if event.type == pygame.KEYDOWN:

@@ -50,7 +50,7 @@ class DynamicText(object):
         
     def update(self):
         if not self.done:
-            try: self.rendered = self.font.render(next(self._gen), True, (0, 128, 0))
+            try: self.rendered = self.font.render(next(self._gen), True, (60,45,31))
             except StopIteration: 
                 self.done = True
                 if self.autoreset: self.reset()
