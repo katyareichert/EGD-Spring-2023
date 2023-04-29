@@ -1,7 +1,9 @@
 import pygame
 import os
 
-class MainCounter:
+from scenes.helper_functions import DynamicText
+
+class DialogueCounter:
 
     def __init__(self, win, width, height, fps) -> None:
 
@@ -15,21 +17,44 @@ class MainCounter:
         self.MAIN_GIF_j = [pygame.transform.scale(pygame.image.load(os.path.join('assets/counter', 'boy' + 
                                                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(1,5)]
 
+        # Read in dialogue box
+        self.DIA_BOX = pygame.transform.scale(pygame.image.load(os.path.join('assets/counter', 'dialogue_box.png')), 
+                                            (137*5,34*5))
+        self.DIA_BOX_RECT = self.DIA_BOX.get_rect(center=(self.WIDTH//2, 3*self.HEIGHT//4 + 10))
+
+        # Define fonts
+        self.NAME_FONT = pygame.font.SysFont('pixeloidsansjr6qo', 25)
+        self.DIA_FONT = pygame.font.SysFont('pixeloidsansjr6qo', 20)
+
         # Define colors
-        self.WHITE = (255,255,255)
+        self.BROWN = (60,45,31)
 
     def draw_window(self, bg_counter):
 
         # Handle background
         self.WIN.blit(self.MAIN_GIF[bg_counter%4], (0,0))
 
+        # Dialogue box
+        self.WIN.blit(self.DIA_BOX, self.DIA_BOX_RECT)
+
+        # Name text
+        self.WIN.blit(self.NAME_TEXT, self.NAME_TEXT_RECT)
+
         # update
         pygame.display.update()
 
-    def run_scene(self, char=0):
+    def run_scene(self, char_name, dia_text, char=0):
         # initialize clock
         clock = pygame.time.Clock()
         run = True
+
+        # initialize name text
+        self.NAME_TEXT = self.NAME_FONT.render(char_name, 1, self.BROWN)
+        self.NAME_TEXT_RECT = self.NAME_TEXT.get_rect(center=(22*5, 67*5))
+
+        # initialize dialogue text
+        message = DynamicText(self.DIA_FONT, "Alex", (13*5, 66*5), autoreset=True)
+        # coordinates 17*5, 79*5
 
         if char:
             self.MAIN_GIF = self.MAIN_GIF_j

@@ -3,7 +3,7 @@ import numpy  as np
 import random
 import os
 
-from scenes.draw_fill_line import dashed_line
+from scenes.helper_functions import dashed_line
 
 class MinigameTumblr:
 

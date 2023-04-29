@@ -21,6 +21,7 @@ if missing:
 from scenes.title_sequence import TitleSequence
 from scenes.options_page import OptionsPage
 from scenes.counter_k import MainCounter
+from scenes.counter_dialogue import DialogueCounter
 from scenes.food_selection import FoodSelection
 from scenes.drink_selection import DrinkSelection
 from scenes.minigame_mug import MinigameMug
@@ -67,6 +68,7 @@ def main():
     # Initialize all scenes
     ts = TitleSequence(WIN, WIDTH, HEIGHT, FPS, op)
     mc = MainCounter(WIN, WIDTH, HEIGHT, FPS)
+    dc = DialogueCounter(WIN, WIDTH, HEIGHT, FPS)
     ds = DrinkSelection(WIN, WIDTH, HEIGHT, FPS)
     fs = FoodSelection(WIN, WIDTH, HEIGHT, FPS)
     mm = MinigameMug(WIN, WIDTH, HEIGHT, FPS)
@@ -81,7 +83,7 @@ def main():
     run, char = ts.run_scene()
 
     while(run):
-        mc.run_scene(char)
+        dc.run_scene('Katya', 'Hello world! I am sentient now', char)
 
         # SELECTION
         drink_selection = ds.run_scene()
