@@ -97,11 +97,11 @@ class TitleSequence:
                                     
                                     clock.tick(4)
 
-                                return (True, char)
+                                return (True, char, vol)
                             
                             elif select_indicator.collidepoint(511, 271):
                                 # Show about screen
-                                char = self.OP.run_scene()
+                                char, vol = self.OP.run_scene()
   
             text_opacity = self.draw_window(bg_counter, text_opacity, select_indicator)
 

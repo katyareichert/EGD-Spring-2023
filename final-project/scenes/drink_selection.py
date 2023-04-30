@@ -15,7 +15,7 @@ class DrinkSelection:
         
         self.STAR_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/stars', 'star_' + 
                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,14)]
-
+ 
         # Define dialogue box
         self.FONT = pygame.font.SysFont('pixeloidsansjr6qo', 25)
         self.DIA_BOX = pygame.transform.scale(pygame.image.load(os.path.join('assets/counter', 'dialogue_box.png')), 
@@ -25,6 +25,9 @@ class DrinkSelection:
         self.NAME_TEXT_RECT = self.NAME_TEXT.get_rect(center=(22*5, 67*5))
         self.MESSAGE = self.FONT.render('Maybe there is something better...', 1, (60,45,31))
 
+        # Define sounds
+        self.DING = pygame.mixer.Sound(os.path.join('sound', 'star.mp3'))
+        
         # Define colors
         self.WHITE = (255,255,255)
 
@@ -36,11 +39,13 @@ class DrinkSelection:
         pygame.display.update()
 
 
-    def run_scene(self, we_want):
+    def run_scene(self, we_want, vol):
         # initialize clock
         clock = pygame.time.Clock()
         run = True
         select_i = 0
+
+        self.DING.set_volume(vol)
 
         # game loop
         while(run):
@@ -60,6 +65,7 @@ class DrinkSelection:
 
                         if drink_selection in we_want:
                             # star animation
+                            self.DING.play()
                             for i in range(len(self.STAR_GIF)):
                                 pygame.event.get()
                                 self.WIN.blit(self.SELECT_GRID[select_i], (0,0))

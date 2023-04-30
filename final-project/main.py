@@ -45,6 +45,7 @@ FPS = 60
 # Load in background music
 BG_MUSIC = pygame.mixer.music.load(os.path.join('sound', 'main_music.ogg'))
 DOOR_SOUND = pygame.mixer.Sound(os.path.join('sound', 'door_chime.mp3'))
+DOOR_SOUND.set_volume(0.6)
 
 # Load in fonts
 font_big = pygame.font.SysFont('pixeloidsansjr6qo', 30)
@@ -83,7 +84,8 @@ def main():
     # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
 
     # Run title sequence
-    run, char = ts.run_scene()
+    run, char, vol = ts.run_scene()
+    DOOR_SOUND.set_volume(vol-0.05)
 
     # Main game loop
     while(run):
@@ -117,16 +119,16 @@ def main():
                 i += 1
                 we_want = literal_eval(file_lines[i])
 
-                drink_selection = ds.run_scene(we_want)
-                fs.run_scene(we_want)    
+                drink_selection = ds.run_scene(we_want, vol)
+                fs.run_scene(we_want, vol)    
 
             # If time to make the drink
             elif file_lines[i] == '[MINIGAME]\n':
                 # MINIGAME
                 if drink_selection >= 4:
-                    mm.run_scene(DRINK_COlORS[drink_selection])
+                    mm.run_scene(DRINK_COlORS[drink_selection], vol)
                 else:
-                    mt.run_scene(DRINK_COlORS[drink_selection])
+                    mt.run_scene(DRINK_COlORS[drink_selection], vol)
 
     pygame.quit()
 

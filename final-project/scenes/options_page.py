@@ -19,7 +19,13 @@ class OptionsPage:
         self.CREDIT_GIF = [pygame.transform.scale(pygame.image.load(os.path.join('assets/options', 'joey_' + 
                                                 str(i) + '.png')), (self.WIDTH, self.HEIGHT)) for i in range(0,8)]
         self.CIRCLES = [pygame.image.load(os.path.join('assets/options', 'circle_' +  str(i) + '.png')) for i in range(0,2)]
-        
+        v_width, v_height = 60, 12
+        self.VOL_RECTS = [pygame.Rect(155 + (i+1)*v_width + i*10, 280, v_width, v_height) for i in range(0,5)]
+
+        # Define sounds
+        self.DING = pygame.mixer.Sound(os.path.join('sound', 'volume.wav'))
+        self.DING.set_volume(1)
+
         # Define colors
         self.WHITE = (255,255,255)
         self.BROWN = (60,45,31)
@@ -47,9 +53,12 @@ class OptionsPage:
         # Draw background
         self.WIN.blit(self.CREDIT_PAGE, (0,0))
 
-        # Draw rectangle and circle
+        # Draw rectangles and circle
         pygame.draw.rect(self.WIN, self.YELLOW, self.TXT_RECTS[selected_i])
         self.WIN.blit(self.CIRCLES[self.CHAR], (0,0))
+
+        for i in range(int(round(self.VOLUME, 1) * 5)):
+            pygame.draw.rect(self.WIN, self.WHITE, self.VOL_RECTS[i])
 
         # Draw characters
         self.WIN.blit(self.CREDIT_GIF[bg_counter%8], (0,0))
@@ -96,16 +105,20 @@ class OptionsPage:
 
                     if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                         # change volume or select character
-                        if selected_i == 0:
+                        if selected_i == 0 and self.VOLUME > 0.19:
                             self.VOLUME = round(self.VOLUME - 0.2, 1)
+                            self.DING.set_volume(self.VOLUME)
+                            self.DING.play()
                             pygame.mixer.music.set_volume(self.VOLUME)
                         elif selected_i == 1:
                             self.CHAR = 1
 
                     if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                         # change volume or select character
-                        if selected_i == 0:
+                        if selected_i == 0 and self.VOLUME < 0.98:
                             self.VOLUME = round(self.VOLUME + 0.2, 1)
+                            self.DING.set_volume(self.VOLUME)
+                            self.DING.play()
                             pygame.mixer.music.set_volume(self.VOLUME)
                         elif selected_i == 1:
                             self.CHAR = 0
@@ -114,7 +127,7 @@ class OptionsPage:
                         if selected_i < len(self.TEXTS)-2:
                             selected_i += 1
                         elif selected_i == len(self.TEXTS)-2:
-                            return self.CHAR
+                            return self.CHAR, self.VOLUME
                         else:
                             pygame.quit()
                             exit()

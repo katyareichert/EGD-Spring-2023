@@ -24,6 +24,9 @@ class FoodSelection:
         self.NAME_TEXT = self.FONT.render('Alex', 1, (60,45,31))
         self.NAME_TEXT_RECT = self.NAME_TEXT.get_rect(center=(22*5, 67*5))
         self.MESSAGE = self.FONT.render('Maybe there is something better...', 1, (60,45,31))
+
+        # Define sounds
+        self.DING = pygame.mixer.Sound(os.path.join('sound', 'star.mp3'))
         
         # Define colors
         self.WHITE = (255,255,255)
@@ -35,11 +38,13 @@ class FoodSelection:
         pygame.display.update()
 
 
-    def run_scene(self, we_want):
+    def run_scene(self, we_want, vol):
         # initialize clock
         clock = pygame.time.Clock()
         run = True
         select_i = 0
+
+        self.DING.set_volume(vol)
 
         # game loop
         while(run):
@@ -59,6 +64,7 @@ class FoodSelection:
 
                         if drink_selection in we_want:
                             # star animation
+                            self.DING.play()
                             for i in range(len(self.STAR_GIF)):
                                 pygame.event.get()
                                 self.WIN.blit(self.SELECT_GRID[select_i], (0,0))

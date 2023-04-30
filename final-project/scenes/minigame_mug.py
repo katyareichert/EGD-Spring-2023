@@ -98,7 +98,7 @@ class MinigameMug:
 
         return (quality_text, quality_score)
 
-    def run_scene(self, colors):
+    def run_scene(self, colors, vol):
 
         pink, yellow = colors
 
@@ -108,6 +108,11 @@ class MinigameMug:
         # initialize clock
         clock = pygame.time.Clock()
         run = True
+
+        # set sound volumes
+        self.POURING_SOUND.set_volume(vol)
+        self.WIN_SOUND.set_volume(vol)
+        self.OOPS_SOUND.set_volume(vol)
 
         # initialize pink drink variables
         pink_height = 2
