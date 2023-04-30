@@ -26,9 +26,7 @@ Alex:
 Sounds like a packed day!
 Based on that, I would suggest...
 [SELECTION]
-1
-3
-5
+(1,3,5)
 
 Alex:
 How does that sound?

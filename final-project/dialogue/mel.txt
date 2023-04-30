@@ -29,9 +29,7 @@ Of course, anytime.
 I think for today, I'll make you something to
 give yourself time and find peace.
 [SELECTION]
-3
-4
-6
+(3,4,6)
 
 Mel:
 That sounds like just what I need right now.

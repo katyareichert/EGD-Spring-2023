@@ -6,9 +6,7 @@ clarity and perseverance.
 Alex: 
 Absolutely! Based on that, I'd recommend...
 [SELECTION]
-2
-3
-5
+(2,3,5)
 
 Alex:
 What do you think?

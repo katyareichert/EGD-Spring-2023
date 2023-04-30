@@ -7,6 +7,8 @@ import os
 import subprocess
 import pkg_resources
 from fontTools.ttLib import TTFont
+from ast import literal_eval
+from scenes.helper_functions import DynamicText
 
 # Check for required packages
 required = {'pygame', 'fonttools'}
@@ -42,6 +44,7 @@ FPS = 60
 
 # Load in background music
 BG_MUSIC = pygame.mixer.music.load(os.path.join('sound', 'main_music.ogg'))
+DOOR_SOUND = pygame.mixer.Sound(os.path.join('sound', 'door_chime.mp3'))
 
 # Load in fonts
 font_big = pygame.font.SysFont('pixeloidsansjr6qo', 30)
@@ -76,7 +79,7 @@ def main():
 
     pygame.mixer.music.play(loops=-1)
     # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
-    pygame.mixer.music.set_volume(0)  # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
+    pygame.mixer.music.set_volume(1)  # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
     # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
 
     # Run title sequence
@@ -85,27 +88,39 @@ def main():
     # Main game loop
     while(run):
 
+        # Read dialogue file
         with open("dialogue/test.txt") as fp:
             file_lines = fp.readlines()
+
+        # Signal new customer
+        DOOR_SOUND.play()
+        mc.run_scene(char)
         
+        # For line in file
         for i in range(len(file_lines)):
 
+            # If blank line, empty scene
             if file_lines[i] == '\n':
                 mc.run_scene(char)
 
+            # If lines of dialogue
             elif file_lines[i].strip()[-1] == ':':
                 char_name = file_lines[i][:-2]
                 i += 1
-
                 while i < len(file_lines) and file_lines[i] != '\n' and file_lines[i][0] != '[':
                     dc.run_scene(char_name, file_lines[i].strip(), char)
                     i += 1
 
+            # If time to select drink and food
             elif file_lines[i] == '[SELECTION]\n':
                 # SELECTION
-                drink_selection = ds.run_scene()
-                food_selection = fs.run_scene()
+                i += 1
+                we_want = literal_eval(file_lines[i])
 
+                drink_selection = ds.run_scene(we_want)
+                fs.run_scene(we_want)    
+
+            # If time to make the drink
             elif file_lines[i] == '[MINIGAME]\n':
                 # MINIGAME
                 if drink_selection >= 4:

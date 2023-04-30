@@ -4,9 +4,7 @@ Hello
 Alex:
 Hello
 [SELECTION]
-1
-2
-3
+(1,2,3)
 
 Alex:
 yo

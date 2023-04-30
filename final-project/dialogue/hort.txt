@@ -23,9 +23,7 @@ Thank you... umm... Alex.
 Alex:
 You know, Hort, I think you could use...
 [SELECTION]
-1
-2
-4
+(1,2,4)
 
 Alex:
 This will bring out your inner confidence!

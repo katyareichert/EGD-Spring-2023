@@ -9,9 +9,7 @@ Alex:
 That's so exciting! To help keep the pressure
 off, would you like...
 [SELECTION]
-1
-3
-4
+(1,3,4)
 
 Alex:
 Hopefully this can help you stay calm and focused.

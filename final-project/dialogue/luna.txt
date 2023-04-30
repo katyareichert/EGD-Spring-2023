@@ -8,9 +8,7 @@ for my final exams.
 Alex:
 I feel you, Luna. Let's make you some...
 [SELECTION]
-2
-3
-5
+(2,3,5)
 
 Alex:
 This can help you stay motivated today!

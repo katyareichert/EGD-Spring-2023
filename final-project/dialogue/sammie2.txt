@@ -17,9 +17,7 @@ Work presentations, blah blah blah.
 Alex:
 Haha, sure. How about...
 [SELECTION]
-1
-2
-3
+(1,2,3)
 
 Sammie:
 Perfect, thanks!

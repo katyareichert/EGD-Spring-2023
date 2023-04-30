@@ -11,9 +11,7 @@ Alex:
 Of course! Art is fueled by passion, so
 for your creative day, I'd recommend...
 [SELECTION]
-2
-3
-6
+(2,3,6)
 
 Alex:
 What do you think?

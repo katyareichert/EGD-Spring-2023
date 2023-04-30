@@ -63,6 +63,9 @@ class MainCounter:
                 bg_counter += 1
                 elapsed_time_ctr = 0
 
+            if bg_counter >= 10:
+                return
+
 
 if __name__ == "__main__":
     w,h = 150*5, 500

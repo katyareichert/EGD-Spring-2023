@@ -9,9 +9,7 @@ Alex:
 I'm sorry to hear that, Ava.
 Let's get you something comforting...
 [SELECTION]
-3
-4
-5
+(3,4,5)
 
 Alex:
 I hope this can help lift your spirits!
