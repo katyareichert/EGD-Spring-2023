@@ -2,20 +2,19 @@ Alex:
 Hey Rachel! How can I help you today?
 
 Rachel:
-Hi Alex! I have a job interview later this afternoon.
+Hi Alex!
+I have a job interview later this afternoon.
 
 Alex:
-That's exciting!
-
+That's exciting! Would you like...
 [SELECTION]
-
 Alex:
 I hope this will help you nail that interview.
 
 Rachel:
 Sounds perfect! Thank you, Alex.
-
 [MINIGAME]
-
 Alex:
-You're welcome, Rachel! Good luck with your interview. You've got this!
+You're welcome, Rachel!
+Good luck with your interview.
+You've got this!

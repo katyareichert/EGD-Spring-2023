@@ -2,13 +2,13 @@ Alex:
 Good morning, Max! How are you feeling today?
 
 Max:
-Hey, Alex! I'm feeling a bit overwhelmed today with my never-ending to-do list.
+Hey, Alex! I'm a little nervous.
+I've got a big violin recital later.
 
 Alex:
-I hear you, Max.
-
+That's so exciting! To help keep the pressure
+off, would you like...
 [SELECTION]
-
 Alex:
 Hopefully this can help you stay calm and focused.
 

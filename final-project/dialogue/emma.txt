@@ -1,13 +1,18 @@
 Emma: 
-Hello! I have a long day of studying ahead for my exams. I could use some mental clarity and perseverance.
+Hello! I have a long day of studying
+for my exams. I could use some mental clarity and perseverance.
 
 Alex: 
 Absolutely! Based on that, I'd recommend...
-
 [SELECTION]
-
+2
+3
+5
 Alex:
 What do you think?
 
 Emma:
 That sounds great! I'll take that. Thanks, Alex!
+[MINIGAME]
+Alex:
+Here you go!

@@ -75,25 +75,43 @@ def main():
     mt = MinigameTumblr(WIN, WIDTH, HEIGHT, FPS)
 
     pygame.mixer.music.play(loops=-1)
-
     # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
     pygame.mixer.music.set_volume(0)  # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
     # !!!!!!!!!!!!!!!! CHANGE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
 
+    # Run title sequence
     run, char = ts.run_scene()
 
+    # Main game loop
     while(run):
-        dc.run_scene('Katya', 'Hello world! I am sentient now', char)
 
-        # SELECTION
-        drink_selection = ds.run_scene()
-        food_selection = fs.run_scene()
+        with open("dialogue/first_customer.txt") as fp:
+            file_lines = fp.readlines()
+        
+        for i in range(len(file_lines)):
 
-        # MINIGAME
-        if drink_selection >= 4:
-            mm.run_scene(DRINK_COlORS[drink_selection])
-        else:
-            mt.run_scene(DRINK_COlORS[drink_selection])
+            if file_lines[i] == '\n':
+                mc.run_scene(char)
+
+            elif file_lines[i][-2] == ':':
+                char_name = file_lines[i][:-2]
+                i += 1
+
+                while i < len(file_lines) and file_lines[i] != '\n' and file_lines[i][0] != '[':
+                    dc.run_scene(char_name, file_lines[i].strip(), char)
+                    i += 1
+
+            elif file_lines[i] == '[SELECTION]\n':
+                # SELECTION
+                drink_selection = ds.run_scene()
+                food_selection = fs.run_scene()
+
+            elif file_lines[i] == '[MINIGAME]\n':
+                # MINIGAME
+                if drink_selection >= 4:
+                    mm.run_scene(DRINK_COlORS[drink_selection])
+                else:
+                    mt.run_scene(DRINK_COlORS[drink_selection])
 
     pygame.quit()
 
