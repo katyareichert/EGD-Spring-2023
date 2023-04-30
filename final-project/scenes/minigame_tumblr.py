@@ -12,6 +12,7 @@ class MinigameTumblr:
         self.WIDTH, self.HEIGHT = width, height
         self.WIN = win
         self.FPS = fps
+        self.FONT = pygame.font.SysFont('pixeloidsansjr6qo', 35)
 
         # Define screen constants
         self.BG = pygame.transform.scale(pygame.image.load(os.path.join('assets/minigame', 'tumblr.png')), 
@@ -23,14 +24,20 @@ class MinigameTumblr:
         self.FILL_RATE = 2
 
         # Message Pane
-        self.MESS_WIDTH, self.MESS_HEIGHT = 300, 400
-        self.MESSAGE_PANE = pygame.Surface((self.MESS_WIDTH,self.MESS_HEIGHT), pygame.SRCALPHA) 
-        self.MESSAGE_PANE.fill((255,255,255, 0))      
+        self.MESS_WIDTH, self.MESS_HEIGHT = 83*5, 14*5
+        self.MESSAGE_PANE = pygame.Surface((self.MESS_WIDTH, self.MESS_HEIGHT), pygame.SRCALPHA)
+        self.MESSAGE_PANE.fill((255,255,255, 0))   
+        self.MESS_RECT = self.MESSAGE_PANE.get_rect(center=(self.WIDTH//2, 87*5))  
 
         # Define drink things
         self.GLASS_HEIGHT, self.GLASS_WIDTH = 44*5, 300
         self.GLASS = pygame.Rect(self.WIDTH//2 - self.GLASS_WIDTH//2, self.HEIGHT//2 - 125,
                                  self.GLASS_WIDTH, self.GLASS_HEIGHT)
+        
+        # Define sounds
+        self.POURING_SOUND = pygame.mixer.Sound(os.path.join('sound', 'pouring.wav'))
+        self.WIN_SOUND = pygame.mixer.Sound(os.path.join('sound', 'perfect.mp3'))
+        self.OOPS_SOUND = pygame.mixer.Sound(os.path.join('sound', 'oops.mp3'))
 
         # Define colors
         self.BLACK = (0,0,0)
@@ -56,10 +63,48 @@ class MinigameTumblr:
 
         # message pane
         if fill_status == 2 or fill_status == 5:
-            self.WIN.blit(self.MESSAGE_PANE, (0,0))
+            qt = self.FONT.render(quality_text, 1, self.BLACK)
+            self.MESSAGE_PANE.blit(qt, qt.get_rect(center=(self.MESS_WIDTH//2, self.MESS_HEIGHT//2)))
+            self.WIN.blit(self.MESSAGE_PANE, self.MESS_RECT)
+
 
         # update
         pygame.display.update()
+
+    def done_filling_pink(self, pink_height, pink_line_val, quality_score):
+
+         # get how close to line
+        distance_to_line = abs((self.HEIGHT//2 - 125 + self.GLASS_HEIGHT - pink_height)-(pink_line_val))
+        self.MESSAGE_PANE.fill((241,216,181,255)) 
+
+        # evaluate the distance
+        quality_text, quality_score = self.evaluate_distance(distance_to_line, quality_score)
+
+        return (self.HEIGHT//2 - 125 + self.GLASS_HEIGHT - pink_height + 2, quality_text, quality_score)
+
+    def done_filling_yellow(self, yellow_start_height, yellow_height, yellow_line_val, quality_score):
+
+        # get how close to line
+        distance_to_line = abs((yellow_start_height - yellow_height)-(yellow_line_val))
+        self.MESSAGE_PANE.fill((241,216,181,255)) 
+
+        return self.evaluate_distance(distance_to_line, quality_score)
+
+    def evaluate_distance(self, distance_to_line, quality_score):
+
+        if distance_to_line <= 20:
+            quality_text = 'Perfect!'
+            quality_score += 2
+            self.WIN_SOUND.play()
+        elif distance_to_line <= 40:
+            quality_text = 'Nice!'
+            quality_score += 1
+            self.WIN_SOUND.play()
+        else:
+            quality_text = 'Oops...'
+            self.OOPS_SOUND.play()
+
+        return (quality_text, quality_score)
 
     def run_scene(self, colors):
 
@@ -86,11 +131,21 @@ class MinigameTumblr:
         yellow_line_val = random.randint(135, pink_line_val - 10)
 
         fill_status = 0
+        quality_score = 2
         quality_text = 'moo moo'
+
+        elapsed_time_ctr = 0
 
         # game loop
         while(run):
             clock.tick(self.FPS)
+
+            # Run timer for quality text
+            if fill_status == 2 or fill_status == 5:
+                t = clock.get_time()
+                elapsed_time_ctr += t
+
+            # Check user actions
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -101,21 +156,31 @@ class MinigameTumblr:
                     if event.key == pygame.K_SPACE:
                         if fill_status == 0 or fill_status == 3:
                             fill_status += 1      
+                            self.POURING_SOUND.play()
 
                     if event.key == pygame.K_RETURN:
                         if fill_status == 2: 
+                            elapsed_time_ctr = 0
                             fill_status += 1
                             quality_text = 'moo moo'
 
-                        if fill_status == 5:
+                        if fill_status >= 5:
                             return 
 
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_SPACE:
-                        if fill_status == 1 or fill_status == 4:
-                                fill_status += 1
 
-            # fill animation
+                        self.POURING_SOUND.stop()
+                        
+                        if fill_status == 1:
+                            yellow_start_height, quality_text, quality_score = self.done_filling_pink(pink_height, pink_line_val, quality_score)
+                        if fill_status == 4:
+                            quality_text, quality_score = self.done_filling_yellow(yellow_start_height, yellow_height, yellow_line_val, quality_score)
+
+                        if fill_status == 1 or fill_status == 4:
+                            fill_status += 1
+
+            # Pink fill animation
             if fill_status == 1:
                 if pink_height <= self.GLASS_HEIGHT:
                     pink_rect = pygame.Rect(self.WIDTH//2 - self.GLASS_WIDTH//2, 
@@ -124,7 +189,9 @@ class MinigameTumblr:
                     pink_height += self.FILL_RATE
                 else:
                     fill_status += 1
+                    yellow_start_height, quality_text, quality_score = self.done_filling_pink(pink_height, pink_line_val, quality_score)
             
+            # Yellow fill animation
             if fill_status == 4:
                 if yellow_height <= self.GLASS_HEIGHT:
                     yellow_rect = pygame.Rect(self.WIDTH//2 - self.GLASS_WIDTH//2, yellow_start_height - yellow_height,
@@ -132,39 +199,17 @@ class MinigameTumblr:
                     yellow_height += self.FILL_RATE
                 else:
                     fill_status += 1
+                    quality_text, quality_score = self.done_filling_yellow(yellow_start_height, yellow_height, yellow_line_val, quality_score)
 
-            # done with filling pink?
-            if fill_status == 2:
+            # Wait for score to go away
+            if elapsed_time_ctr >= 4000:
+                if fill_status == 2: 
+                    elapsed_time_ctr = 0
+                    fill_status += 1
+                    quality_text = 'moo moo'
 
-                # get how close to line
-                distance_to_line = abs((self.HEIGHT//2 - 125 + self.GLASS_HEIGHT - pink_height)-(pink_line_val))
-                
-                if distance_to_line <= 20:
-                    quality_text = 'Perfect! This will add an extra bit of magic to their day!'
-                elif distance_to_line <= 40:
-                    quality_text = 'Nice! Way to get the job done!'
-                else:
-                    quality_text = 'Oops... Hopefully this won\'t ruin their day...'
-
-                self.MESSAGE_PANE.fill((255,255,255,255)) 
-
-                # set yellow level
-                yellow_start_height = self.HEIGHT//2 - 125 + self.GLASS_HEIGHT - pink_height + 2
-
-            # done filling yellow?
-            if fill_status == 5:
-
-                # get how close to line
-                distance_to_line = abs((yellow_start_height - yellow_height)-(yellow_line_val))
-                
-                if distance_to_line <= 20:
-                    quality_text = 'Perfect! This will add an extra bit of magic to their day!'
-                elif distance_to_line <= 40:
-                    quality_text = 'Nice! Way to get the job done!'
-                else:
-                    quality_text = 'Oops... Hopefully this won\'t ruin their day...'
-
-                self.MESSAGE_PANE.fill((255,255,255,255))
+                if fill_status >= 5:
+                    return 
 
             self.draw_window(pink_rect, yellow_rect, fill_status, quality_text, pink_line_val, yellow_line_val, yellow_start_height)
 

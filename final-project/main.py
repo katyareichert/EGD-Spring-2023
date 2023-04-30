@@ -85,7 +85,7 @@ def main():
     # Main game loop
     while(run):
 
-        with open("dialogue/first_customer.txt") as fp:
+        with open("dialogue/test.txt") as fp:
             file_lines = fp.readlines()
         
         for i in range(len(file_lines)):
