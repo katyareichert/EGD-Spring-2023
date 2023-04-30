@@ -67,7 +67,6 @@ class MinigameTumblr:
             self.MESSAGE_PANE.blit(qt, qt.get_rect(center=(self.MESS_WIDTH//2, self.MESS_HEIGHT//2)))
             self.WIN.blit(self.MESSAGE_PANE, self.MESS_RECT)
 
-
         # update
         pygame.display.update()
 
@@ -128,7 +127,7 @@ class MinigameTumblr:
 
         # get random line levels
         pink_line_val = random.randint(220, 280)
-        yellow_line_val = random.randint(135, pink_line_val - 10)
+        yellow_line_val = random.randint(135, pink_line_val - 50)
 
         fill_status = 0
         quality_score = 2
@@ -202,7 +201,7 @@ class MinigameTumblr:
                     quality_text, quality_score = self.done_filling_yellow(yellow_start_height, yellow_height, yellow_line_val, quality_score)
 
             # Wait for score to go away
-            if elapsed_time_ctr >= 4000:
+            if elapsed_time_ctr >= 3000:
                 if fill_status == 2: 
                     elapsed_time_ctr = 0
                     fill_status += 1

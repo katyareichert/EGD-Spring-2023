@@ -1,15 +1,18 @@
 Alex:
-Hey there! Welcome to our coffee shop. What can I get for you today?
+Hey there! Welcome to our coffee shop.
+What can I get for you today?
 
 Hort:
-Hi, umm... I'm Hort. I'm still taking a look...
+Hi, umm... I'm Hort.
+I'm still taking a look...
 
 Alex:
 Sure thing, Hort. 
 So, what brings you to our coffee shop today?
 
 Hort:
-I, umm... just wanted to try something new. I heard good things about this place.
+I, umm... just wanted to try something new.
+I heard good things about this place.
 
 Alex:
 Awesome! We're glad to have you here.
@@ -19,19 +22,21 @@ Thank you... umm... Alex.
 
 Alex:
 You know, Hort, I think you could use...
-
 [SELECTION]
+1
+2
+4
 
 Alex:
-Courage to step out of your comfort zone and try new things, and Serenity to calm your nerves and enjoy the moment.
+This will bring out your inner confidence!
 
 Hort:
 Umm... yeah, I could use that. Thank you, Alex.
-
 [MINIGAME]
-
 Alex:
-You're welcome, Hort. Don't hesitate to ask if you have any questions or need anything else. We're here to help.
+You're welcome, Hort. Don't hesitate to ask
+if you have any questions or need anything
+else. We're here to help.
 
 Hort:
 Thank you... umm... I appreciate it.

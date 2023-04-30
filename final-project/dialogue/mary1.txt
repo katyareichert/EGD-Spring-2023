@@ -2,34 +2,40 @@ Alex:
 Hey Mary! How's it going?
 
 Mary:
-Hi Alex! I'm doing great, thanks. I have a date with a cute girl later today.
+Hi Alex! I'm doing great, thanks.
+I have a date with a cute girl later today.
 
 Alex:
 That's awesome!
-So, tell me more about this date. Where are you two going?
+So, tell me more about this date.
+Where are you two going?
 
 Mary:
-We're going for a picnic in the park. I'm really excited about it!
+We're going for a picnic in the park.
+I'm really excited about it!
 
 Alex:
-Sounds like a lovely plan. I hope you have a wonderful time!
+Sounds like a lovely plan.
+I hope you have a wonderful time!
 
 Mary:
-Thank you, Alex! I'm really looking forward to it.
+Thank you, Alex!
+I'm really looking forward to it.
 
 Alex:
-Well, to give you a little boost for your big day, I think you'll need some...
-
+Well, to give you a little boost for your
+big day, I think you'll need some...
 [SELECTION]
+1
+3
+6
 
 Alex:
-It takes courage to put yourself out there and be vulnerable, and love to connect with someone special.
+I hope this helps you connect with your date.
 
 Mary:
-That's true! I'll take all the courage and love I can get.
-
+Haha, I'll take all the help I can get!
 [MINIGAME]
-
 Alex:
 Enjoy!
 
@@ -37,10 +43,13 @@ Mary:
 Thanks, Alex! I appreciate it.
 
 Alex:
-You're welcome, Mary. I hope your date goes amazingly well!
+You're welcome, Mary.
+I hope your date goes amazingly well!
 
 Mary:
-Thank you, Alex! I'll let you know how it goes.
+Thank you, Alex!
+I'll let you know how it goes.
 
 Alex:
-Looking forward to hearing all about it. Have a fantastic day!
+Looking forward to hearing all about it.
+Have a fantastic day!

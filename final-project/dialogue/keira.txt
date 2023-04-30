@@ -1,13 +1,30 @@
 Keira:
-Hi! I have a challenging conversation scheduled later today that I'm feeling anxious about. I need to approach it with empathy and understanding.
+Hey Alex!
+
+Alex:
+Hiya! What's up?
+
+Keira:
+I have a challenging conversation scheduled
+later today that I'm feeling anxious about.
+I need to approach it with understanding.
 
 Alex: 
-I understand. For that, I'd recommend...
-
+Sounds important. For that, I'd recommend...
 [SELECTION]
+3
+4
+5
 
 Alex:
 How does that sound?
 
 Keira:
 That's perfect. Thank you so much!
+[MINIGAME]
+
+Alex:
+Here you go! Good luck later.
+
+Keira:
+Thanks as well!

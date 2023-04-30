@@ -17,6 +17,10 @@ Work presentations, blah blah blah.
 Alex:
 Haha, sure. How about...
 [SELECTION]
+1
+2
+3
+
 Sammie:
 Perfect, thanks!
 [MINIGAME]
@@ -29,7 +33,8 @@ meeting and slayed my workout.
 Thanks for the recommendation!
 
 Alex:
-You're welcome! I'm glad to hear that. Sometimes a little extra patience and courage
+You're welcome! I'm glad to hear that.
+Sometimes a little extra patience and courage
 can go a long way.
 
 Sammie:

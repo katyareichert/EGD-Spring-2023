@@ -31,7 +31,9 @@ Alex:
 Excellent! How about...
 [SELECTION]
 1
+2
 3
+
 Alex:
 Hopefully this will help you keep your cool!
 

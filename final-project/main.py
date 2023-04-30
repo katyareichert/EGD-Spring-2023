@@ -93,7 +93,7 @@ def main():
             if file_lines[i] == '\n':
                 mc.run_scene(char)
 
-            elif file_lines[i][-2] == ':':
+            elif file_lines[i].strip()[-1] == ':':
                 char_name = file_lines[i][:-2]
                 i += 1
 

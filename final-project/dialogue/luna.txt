@@ -2,20 +2,22 @@ Alex:
 Hi there, how is your day looking?
 
 Luna:
-Hey, Alex! I have a long day of studying ahead of me.
+Hey, Alex! I have a long day of studying
+for my final exams.
 
 Alex:
-I feel you, Luna.
-
+I feel you, Luna. Let's make you some...
 [SELECTION]
+2
+3
+5
 
 Alex:
-This can help you stay focused and motivated through the day!
+This can help you stay motivated today!
 
 Luna:
 That sounds perfect. Thank you, Alex.
-
 [MINIGAME]
-
 Alex:
-You're welcome, Luna. Best of luck with your studying!
+You're welcome, Luna.
+Best of luck with your studying!

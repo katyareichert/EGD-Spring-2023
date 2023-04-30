@@ -191,6 +191,16 @@ class MinigameMug:
                     fill_status += 1
                     quality_text, quality_score = self.done_filling_yellow(yellow_start_height, yellow_height, yellow_line_val, quality_score)
 
+            # Wait for score to go away
+            if elapsed_time_ctr >= 3000:
+                if fill_status == 2: 
+                    elapsed_time_ctr = 0
+                    fill_status += 1
+                    quality_text = 'moo moo'
+
+                if fill_status >= 5:
+                    return 
+
             self.draw_window(pink_rect, yellow_rect, fill_status, quality_text, pink_line_val, yellow_line_val, yellow_start_height)
 
 
