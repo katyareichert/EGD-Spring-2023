@@ -1,0 +1,36 @@
+Alex:
+Good morning!
+Anything special I can help with today?
+
+Billie:
+Actually, yes!
+I'm picking up my parents from the airport.
+They're flying in from the Philippines.
+
+Alex:
+That's exciting! Have they been here before?
+
+Billie:
+Yeah, they come to visit every couple years.
+But it's always nice to have them here.
+
+Alex:
+Definitely.
+Do you have anything special planned?
+
+Billie:
+Not really, just spending some time together
+and catching up. Maybe taking them to some of
+my favorite spots around the city.
+
+Alex:
+Sounds like a good plan.
+You know, I think you'll enjoy...
+[SELECTION]
+(2,4,6)
+Billie:
+Thank you, Alex. That's really sweet.
+[MINIGAME]
+Alex:
+My pleasure. Enjoy your drink, and
+have a great day with your family.

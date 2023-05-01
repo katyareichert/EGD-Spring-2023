@@ -1,0 +1,46 @@
+Alex:
+Good morning! What can I get for you today?
+
+Sylvia:
+Hey Alex...
+
+Alex:
+Is everything okay? You seem a bit down.
+
+Sylvia:
+I had to put my dog down last night.
+He was my best friend for over a decade.
+
+Alex:
+I'm so sorry to hear that, truly.
+Can I offer you some...
+[SELECTION]
+(3,4,6)
+Sylvia:
+Thanks, Alex.
+
+Alex:
+Losing a pet can be incredibly difficult.
+
+Sylvia:
+He was always there for me, you know?
+Always happy to see me and never judged me.
+
+Alex:
+It sounds like he was an amazing companion.
+
+Sylvia:
+He was. I just don't know what I'm going to
+do without him now that he's gone.
+
+Alex:
+I know it may not make things easier, but
+sometimes it's good to take comfort in the
+memories and love that you shared.
+
+Sylvia:
+Thank you. I needed to hear that.
+[MINIGAME]
+Alex:
+Here you go. And if you need anything,
+don't hesitate to let me know.

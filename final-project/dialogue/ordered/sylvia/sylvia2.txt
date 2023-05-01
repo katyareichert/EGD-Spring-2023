@@ -1,0 +1,39 @@
+Alex:
+Good morning, Sylvia!
+How are you doing today?
+
+Sylvia:
+To be honest, still a bit sad about my dog.
+But I've been looking into fostering puppies.
+
+Alex:
+That's wonderful, Sylvia! Fostering can be a
+really rewarding experience.
+
+Sylvia:
+Yeah, I'm really excited about the prospect
+of giving another dog a loving home.
+
+Alex:
+I'm sure you'll be a great foster parent.
+It takes a lot of courage and kindness to
+open your heart to an animal in need.
+
+Sylvia: Thank you, Alex. It's been a tough time, but I'm trying to focus on the positive things.
+
+Alex:
+That in mind, I think you'll love some...
+[SELECTION]
+(2,3,6)
+Alex:
+I hope this will serve you well as you
+navigate this new chapter.
+
+Sylvia:
+I appreciate your kind words.
+
+Alex:
+Of course, Sylvia.
+[MINIGAME]
+Alex:
+It's always a pleasure to chat with you. And I'm looking forward to hearing all about your experiences as a foster parent in the future.
