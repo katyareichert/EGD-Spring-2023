@@ -75,7 +75,8 @@ class TitleSequence:
             # Handle Menu selection
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    return (False, 0)
+                    pygame.quit()
+                    exit()
 
                 if text_opacity == 255:
                     if event.type == pygame.KEYDOWN:
@@ -97,7 +98,7 @@ class TitleSequence:
                                     
                                     clock.tick(4)
 
-                                return (True, char, vol)
+                                return (char, vol)
                             
                             elif select_indicator.collidepoint(511, 271):
                                 # Show about screen
