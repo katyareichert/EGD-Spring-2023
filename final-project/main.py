@@ -1,23 +1,11 @@
 # Library Imports
-import pygame
-
 import sys
 import os
 
-import subprocess
-import pkg_resources
-from fontTools.ttLib import TTFont
+# Library Imports
+import pygame
 from ast import literal_eval
 from scenes.get_random_order import get_random_order
-
-# Check for required packages
-required = {'pygame', 'fonttools'}
-installed = {pkg.key for pkg in pkg_resources.working_set}
-missing = required - installed
-
-if missing:
-    python = sys.executable
-    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 
 # Scene Imports
 from scenes.title_sequence import TitleSequence
