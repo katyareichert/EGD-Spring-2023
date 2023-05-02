@@ -64,6 +64,7 @@ class TitleSequence:
         text_opacity = 5
         select_indicator = pygame.Rect(510, 200, 10, 10)
         char = 0
+        vol = 1
 
         # game loop
         while(run):
